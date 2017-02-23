@@ -16,7 +16,9 @@ module Changelogs
     def test_that_it_inits_new_entry
       entry = Entry.new(@@valid_args)
 
-      assert_equal entry.event, 'C'
+      @@valid_args.each do |key, val|
+        assert_equal entry.public_send(key), val
+      end
     end
   end
 end
