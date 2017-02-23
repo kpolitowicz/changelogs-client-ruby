@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'changelogs/client/ruby/version'
+require 'changelogs/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "changelogs-client-ruby"
-  spec.version       = Changelogs::Client::Ruby::VERSION
+  spec.version       = Changelogs::VERSION
   spec.authors       = ["Kamil Politowicz"]
   spec.email         = ["k.politowicz@gmail.com"]
 

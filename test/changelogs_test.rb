@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Changelogs::Client::RubyTest < Minitest::Test
+class ChangelogsTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::Changelogs::Client::Ruby::VERSION
+    refute_nil ::Changelogs::VERSION
   end
 
   def test_it_does_something_useful
