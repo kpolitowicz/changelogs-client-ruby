@@ -17,7 +17,7 @@ module Changelogs
       entry = Entry.new(@@valid_args)
 
       @@valid_args.each do |key, val|
-        assert_equal entry.public_send(key), val
+        assert_equal entry.public_send(key), val, "Wrong entry.#{key}"
       end
     end
   end
