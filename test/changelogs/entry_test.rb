@@ -13,12 +13,15 @@ module Changelogs
       logged_at:   DateTime.parse('2001-02-03 04:05:06 UTC'),
     }
 
-    def test_that_it_creates_new_entry
+    def setup
       stub_request(:post, "https://changelogs.nimonikapp.com/entries").
-          with(:body => "{\"data\":{\"type\":\"entries\",\"attributes\":{\"event\":\"C\",\"changeset\":\"{}\",\"account_id\":123,\"user_id\":234,\"user_type\":\"F\",\"logged_type\":\"SomeModel\",\"logged_id\":345,\"logged_at\":\"2001-02-03T04:05:06+00:00\"}}}",
+        with(:body => "{\"data\":{\"type\":\"entries\",\"attributes\":{\"event\":\"C\",\"changeset\":\"{}\",\"account_id\":123,\"user_id\":234,\"user_type\":\"F\",\"logged_type\":\"SomeModel\",\"logged_id\":345,\"logged_at\":\"2001-02-03T04:05:06+00:00\"}}}",
                       :headers => {'Accept'=>'application/vnd.api+json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/vnd.api+json', 'User-Agent'=>'Faraday v0.11.0'}).
         to_return(:status => 200, :body => "", :headers => {})
 
+    end
+
+    def test_that_it_creates_new_entry
       entry = Entry.create(@@valid_args)
 
       @@valid_args.each do |key, val|
