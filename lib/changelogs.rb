@@ -1,5 +1,3 @@
 require "changelogs/version"
+require "changelogs/entry"
 
-module Changelogs
-  # Your code goes here...
-end
