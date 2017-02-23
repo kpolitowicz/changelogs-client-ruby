@@ -11,7 +11,7 @@ module Changelogs
         user_type:   'F',
         logged_type: 'SomeModel',
         logged_id:   345,
-        # logged_at:   ::DateTime.parse('2001-02-03 04:05:06 UTC'),
+        logged_at:   DateTime.parse('2001-02-03 04:05:06 UTC'),
       )
 
       assert_equal entry.event, 'C'
