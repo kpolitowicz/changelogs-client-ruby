@@ -14,7 +14,7 @@ module Changelogs
         # logged_at:   ::DateTime.parse('2001-02-03 04:05:06 UTC'),
       )
 
-      assert_equals entry.event, 'C'
+      assert_equal entry.event, 'C'
     end
   end
 end
