@@ -20,5 +20,13 @@ module Changelogs
         assert_equal entry.public_send(key), val, "Wrong entry.#{key}"
       end
     end
+
+    def test_that_it_creates_new_entry
+      entry = Entry.create(@@valid_args)
+
+      @@valid_args.each do |key, val|
+        assert_equal entry.public_send(key), val, "Wrong entry.#{key}"
+      end
+    end
   end
 end
