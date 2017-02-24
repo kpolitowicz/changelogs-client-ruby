@@ -59,6 +59,12 @@ module Changelogs
       end
     end
 
+    def test_that_successful_save_returns_true
+      entry = Entry.new(@valid_args)
+      
+      assert_same entry.save, true
+    end
+
     private
 
       def change_subdomain_to(subdomain)

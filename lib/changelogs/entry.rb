@@ -14,8 +14,9 @@ module Changelogs
     end
 
     def self.create(attrs = {})
-      # FIXME: use block to call save
-      new(attrs).save
+      new(attrs) do |record|
+        record.save
+      end
     end
 
     def initialize(attrs = {})
@@ -29,13 +30,14 @@ module Changelogs
       @logged_type = attrs[:logged_type]
       @logged_id   = attrs[:logged_id]
       @logged_at   = attrs[:logged_at]
+
+      yield self if block_given?
     end
 
     def save
       API.post(attributes)
 
-      # FIXME: return true|false not self
-      self
+      true
     end
 
     private
