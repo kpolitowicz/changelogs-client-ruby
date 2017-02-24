@@ -5,9 +5,9 @@ class ChangelogsTest < Minitest::Test
     refute_nil Changelogs::VERSION
   end
 
-  def test_that_api_host_is_assignable
-    Changelogs.api_host = 'http://example.com/'
+  def test_that_api_subdomain_is_assignable
+    Changelogs.subdomain = 'subdomain'
 
-    assert_equal Changelogs.api_host, 'http://example.com/'
+    assert_equal Changelogs.api_host, 'https://subdomain.nimonikapp.com/'
   end
 end
