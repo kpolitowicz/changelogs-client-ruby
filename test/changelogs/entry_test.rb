@@ -18,6 +18,10 @@ module Changelogs
         to_return(status: 200, body: "", headers: {})
     end
 
+    def teardown
+      Changelogs.subdomain = nil
+    end
+
     def test_that_it_creates_new_entry
       entry = Entry.create(@@valid_args)
 

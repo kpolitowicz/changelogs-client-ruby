@@ -6,7 +6,8 @@ module Changelogs
     attr_writer :subdomain
 
     def api_host
-      "https://#{@subdomain}.nimonikapp.com/"
+      subdomain = @subdomain || 'changelogs'
+      "https://#{subdomain}.nimonikapp.com/"
     end
   end
 end
