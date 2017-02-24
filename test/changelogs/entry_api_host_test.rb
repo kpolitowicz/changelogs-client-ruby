@@ -2,6 +2,10 @@ require 'test_helper'
 
 module Changelogs
   class EntryApiHostTest < Minitest::Test
+    def setup
+      WebMock.reset!
+    end
+
     def teardown
       change_subdomain_to(nil)
     end

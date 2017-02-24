@@ -14,6 +14,7 @@ module Changelogs
     }
 
     def setup
+      WebMock.reset!
       stub_request(:post, "https://changelogs.nimonikapp.com/entries").
         to_return(status: 200, body: "", headers: {})
     end
