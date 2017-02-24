@@ -41,6 +41,16 @@ module Changelogs
     private
 
       def attributes
+        {
+          event: event,
+          changeset: changeset,
+          account_id: account_id,
+          user_id: user_id,
+          user_type: user_type,
+          logged_type: logged_type,
+          logged_id: logged_id,
+          logged_at: logged_at,
+        }
       end
   end
 end
