@@ -25,5 +25,15 @@ module Changelogs
         assert_equal entry.public_send(key), val, "Wrong entry.#{key}"
       end
     end
+
+    def test_that_it_configurable_subdomain
+      Changelogs.subdomain = 'changelogs.staging'
+      stub_request(:post, "https://changelogs.staging.nimonikapp.com/entries").
+        to_return(status: 200, body: "", headers: {})
+
+      entry = Entry.create(@@valid_args)
+
+      assert_requested :post, "https://changelogs.staging.nimonikapp.com/entries"
+    end
   end
 end

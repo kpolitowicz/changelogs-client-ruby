@@ -2,6 +2,8 @@ require 'json_api_client'
 
 module Changelogs
   class Entry < JsonApiClient::Resource
-    self.site = 'https://changelogs.nimonikapp.com'
+    def self.site
+      Changelogs.api_host
+    end
   end
 end
