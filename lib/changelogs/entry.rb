@@ -32,16 +32,13 @@ module Changelogs
     end
 
     def save
-      API.send(:post, path, attributes.to_json)
+      API.post(attributes.to_json)
 
       # FIXME: return true|false not self
       self
     end
 
     private
-
-      def path
-      end
 
       def attributes
       end
