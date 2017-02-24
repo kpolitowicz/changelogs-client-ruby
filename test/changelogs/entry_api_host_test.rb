@@ -29,12 +29,6 @@ module Changelogs
 
       def change_subdomain_to(subdomain)
         Changelogs.subdomain = subdomain
-        reload_json_resource_connection
-      end
-
-      # Needed because JsonApiClient::Resource caches the connection
-      def reload_json_resource_connection
-        Entry.connection(true)
       end
   end
 end
