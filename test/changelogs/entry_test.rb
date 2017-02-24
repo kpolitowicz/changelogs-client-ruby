@@ -34,7 +34,7 @@ module Changelogs
       entry = Entry.create(@@valid_args)
 
       assert_requested :post, "https://changelogs.nimonikapp.com/entries" do |req|
-        req = '{"data":{"type":"entries","attributes":{"event":"C","changeset":"{}","account_id":123,"user_id":234,"user_type":"F","logged_type":"SomeModel","logged_id":345,"logged_at":"2001-02-03T04:05:06+00:00"}}}'
+        req = '{"event":"C","changeset":"{}","account_id":123,"user_id":234,"user_type":"F","logged_type":"SomeModel","logged_id":345,"logged_at":"2001-02-03T04:05:06+00:00"}'
       end
     end
   end
