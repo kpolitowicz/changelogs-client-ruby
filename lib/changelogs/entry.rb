@@ -37,5 +37,13 @@ module Changelogs
       # FIXME: return true|false not self
       self
     end
+
+    private
+
+      def path
+      end
+
+      def attributes
+      end
   end
 end
