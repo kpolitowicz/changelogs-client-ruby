@@ -14,7 +14,7 @@ module Changelogs
     end
 
     def self.create(attrs = {})
-      new(attrs)
+      new(attrs).save
     end
 
     def initialize(attrs = {})
@@ -28,6 +28,10 @@ module Changelogs
       @logged_type = attrs[:logged_type]
       @logged_id   = attrs[:logged_id]
       @logged_at   = attrs[:logged_at]
+    end
+
+    def save
+      self
     end
   end
 end
