@@ -61,7 +61,7 @@ module Changelogs
 
     def test_that_successful_save_returns_true
       entry = Entry.new(@valid_args)
-      
+
       assert_same entry.save, true
     end
 
