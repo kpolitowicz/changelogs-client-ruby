@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Changelogs
-  class EntryApiHostTest < Minitest::Test
+  class EntryApiTest < Minitest::Test
     @@valid_args = {
       event:       'C',
       changeset:   '{}',
