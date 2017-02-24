@@ -31,6 +31,8 @@ module Changelogs
     end
 
     def save
+      API.send(:post, path, attributes.to_json)
+
       self
     end
   end
