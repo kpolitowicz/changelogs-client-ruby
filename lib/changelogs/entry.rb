@@ -32,7 +32,7 @@ module Changelogs
     end
 
     def save
-      API.post(attributes.to_json)
+      API.post(attributes)
 
       # FIXME: return true|false not self
       self
