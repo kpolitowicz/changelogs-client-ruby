@@ -14,6 +14,7 @@ module Changelogs
     end
 
     def self.create(attrs = {})
+      # FIXME: use block to call save
       new(attrs).save
     end
 
@@ -33,6 +34,7 @@ module Changelogs
     def save
       API.send(:post, path, attributes.to_json)
 
+      # FIXME: return true|false not self
       self
     end
   end
