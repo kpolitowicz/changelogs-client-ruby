@@ -62,6 +62,15 @@ module Changelogs
       assert_same entry.save, true
     end
 
+    def test_that_unsuccessful_save_returns_false
+      stub_request(:post, "https://changelogs.nimonikapp.com/entries").
+        to_return(status: 422, body: "", headers: {})
+
+      entry = Entry.new()
+
+      assert_same entry.save, false
+    end
+
     private
 
       def change_subdomain_to(subdomain)

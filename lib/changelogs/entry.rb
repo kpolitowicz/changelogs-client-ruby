@@ -36,8 +36,6 @@ module Changelogs
 
     def save
       API.post(attributes)
-
-      true
     end
 
     private
