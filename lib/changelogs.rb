@@ -4,11 +4,6 @@ require "changelogs/api"
 
 module Changelogs
   class << self
-    attr_writer :subdomain
-
-    def api_host
-      subdomain = @subdomain || 'changelogs'
-      "https://#{subdomain}.nimonikapp.com/"
-    end
+    attr_accessor :api_host
   end
 end

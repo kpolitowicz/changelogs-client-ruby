@@ -18,20 +18,22 @@ module Changelogs
 
       stub_request(:post, "https://changelogs.nimonikapp.com/entries").
         to_return(status: 200, body: "", headers: {})
+
+      change_api_host_to("https://changelogs.nimonikapp.com/entries")
     end
 
     def teardown
-      change_subdomain_to(nil)
+      change_api_host_to("https://changelogs.nimonikapp.com/entries")
     end
 
-    def test_that_it_uses_default_api_subdomain
+    def test_that_it_uses_default_api_host
       entry = Entry.create()
 
       assert_requested :post, "https://changelogs.nimonikapp.com/entries"
     end
 
-    def test_that_it_uses_configurable_subdomain
-      change_subdomain_to('changelogs.staging')
+    def test_that_it_uses_configurable_api_host
+      change_api_host_to("https://changelogs.staging.nimonikapp.com/entries")
       stub_request(:post, "https://changelogs.staging.nimonikapp.com/entries").
         to_return(status: 200, body: "", headers: {})
 
@@ -73,8 +75,8 @@ module Changelogs
 
     private
 
-      def change_subdomain_to(subdomain)
-        Changelogs.subdomain = subdomain
+      def change_api_host_to(api_host)
+        Changelogs.api_host = api_host
       end
   end
 end
