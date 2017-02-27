@@ -7,7 +7,7 @@ module Changelogs
 
       conn = Faraday.new(url: Changelogs.api_host)
       resp = conn.post do |req|
-        req.url '/entries'
+        req.url '/api/changelogs'
         req.headers['Content-Type'] = 'application/json'
         req.body = attrs.to_json
       end

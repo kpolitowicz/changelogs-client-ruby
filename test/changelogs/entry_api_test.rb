@@ -16,30 +16,30 @@ module Changelogs
     def setup
       WebMock.reset!
 
-      stub_request(:post, "https://changelogs.nimonikapp.com/entries").
+      stub_request(:post, "https://changelogs.nimonikapp.com/api/changelogs").
         to_return(status: 200, body: "", headers: {})
 
-      change_api_host_to("https://changelogs.nimonikapp.com/entries")
+      change_api_host_to("https://changelogs.nimonikapp.com/api/changelogs")
     end
 
     def teardown
-      change_api_host_to("https://changelogs.nimonikapp.com/entries")
+      change_api_host_to("https://changelogs.nimonikapp.com/api/changelogs")
     end
 
     def test_that_it_uses_default_api_host
       entry = Entry.create()
 
-      assert_requested :post, "https://changelogs.nimonikapp.com/entries"
+      assert_requested :post, "https://changelogs.nimonikapp.com/api/changelogs"
     end
 
     def test_that_it_uses_configurable_api_host
-      change_api_host_to("https://changelogs.staging.nimonikapp.com/entries")
-      stub_request(:post, "https://changelogs.staging.nimonikapp.com/entries").
+      change_api_host_to("https://changelogs.staging.nimonikapp.com/api/changelogs")
+      stub_request(:post, "https://changelogs.staging.nimonikapp.com/api/changelogs").
         to_return(status: 200, body: "", headers: {})
 
       entry = Entry.create()
 
-      assert_requested :post, "https://changelogs.staging.nimonikapp.com/entries"
+      assert_requested :post, "https://changelogs.staging.nimonikapp.com/api/changelogs"
     end
 
     def test_that_it_disables_logging_if_api_host_not_specified
@@ -62,7 +62,7 @@ module Changelogs
     def test_that_it_calls_api_to_create
       entry = Entry.create(@@valid_args)
 
-      assert_requested :post, "https://changelogs.nimonikapp.com/entries" do |req|
+      assert_requested :post, "https://changelogs.nimonikapp.com/api/changelogs" do |req|
         req = '{"event":"C","changeset":"{}","account_id":123,"user_id":234,"user_type":"F","logged_type":"SomeModel","logged_id":345,"logged_at":"2001-02-03T04:05:06+00:00"}'
       end
     end
@@ -74,7 +74,7 @@ module Changelogs
     end
 
     def test_that_unsuccessful_save_returns_false
-      stub_request(:post, "https://changelogs.nimonikapp.com/entries").
+      stub_request(:post, "https://changelogs.nimonikapp.com/api/changelogs").
         to_return(status: 422, body: "", headers: {})
 
       entry = Entry.new()
