@@ -62,9 +62,9 @@ module Changelogs
     def test_that_it_calls_api_to_create
       entry = Entry.create(@@valid_args)
 
-      assert_requested :post, "https://changelogs.nimonikapp.com/api/changelogs" do |req|
-        req = '{"event":"C","changeset":"{}","account_id":123,"user_id":234,"user_type":"F","logged_type":"SomeModel","logged_id":345,"logged_at":"2001-02-03T04:05:06+00:00"}'
-      end
+      assert_requested :post, 
+                       "https://changelogs.nimonikapp.com/api/changelogs",
+                       body: '{"changelog":{"event":"C","changeset":"{}","account_id":123,"user_id":234,"user_type":"F","logged_type":"SomeModel","logged_id":345,"logged_at":"2001-02-03T04:05:06+00:00"}}'
     end
 
     def test_that_successful_save_returns_true

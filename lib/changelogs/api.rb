@@ -10,7 +10,7 @@ module Changelogs
         req.url '/api/changelogs'
         req.headers['Content-Type'] = 'application/json'
         req.headers['Accept']       = 'application/json'
-        req.body = attrs.to_json
+        req.body = { changelog: attrs }.to_json
       end
 
       resp.status < 400
