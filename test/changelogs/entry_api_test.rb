@@ -42,6 +42,15 @@ module Changelogs
       assert_requested :post, "https://changelogs.staging.nimonikapp.com/entries"
     end
 
+    def test_that_it_disables_logging_if_api_host_not_specified
+      change_api_host_to(nil)
+      stub_request(:post, //).to_return(status: 200, body: "", headers: {})
+
+      entry = Entry.create()
+
+      assert_not_requested :post, //
+    end
+
     def test_that_it_creates_new_entry
       entry = Entry.create(@@valid_args)
 
