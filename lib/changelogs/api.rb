@@ -9,6 +9,7 @@ module Changelogs
       resp = conn.post do |req|
         req.url '/api/changelogs'
         req.headers['Content-Type'] = 'application/json'
+        req.headers['Accept']       = 'application/json'
         req.body = attrs.to_json
       end
 
